@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IDailyExchange } from "@app/pages/exchange/exchange.interface";
+import { IDailyExchange } from "@app/pages/exchange/interfaces/exchange.interface";
 
 @Component({
   selector: 'app-days-card',

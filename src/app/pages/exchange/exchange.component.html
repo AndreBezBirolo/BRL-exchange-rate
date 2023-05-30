@@ -16,7 +16,7 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      <button mat-flat-button color="primary" class="full-width button-large">Exchange Result</button>
+      <button (click)="onChangeClick()" mat-flat-button color="primary" class="full-width button-large">Exchange Result</button>
     </form>
   </section>
   <section *ngIf="true" class="results">
