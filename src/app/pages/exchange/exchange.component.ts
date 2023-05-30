@@ -56,7 +56,7 @@ export class ExchangeComponent {
       .catch(() => {
         this.snackBarService.open('An error has occurred', 'Close', {
           duration: 2000,
-          verticalPosition: 'top'
+          verticalPosition: 'top',
         });
       })
   }

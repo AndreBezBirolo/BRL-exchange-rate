@@ -40,7 +40,7 @@
         <mat-icon (click)="openList = !openList" *ngIf="openList" class="cursor-pointer" color="primary">remove
         </mat-icon>
       </div>
-      <app-days-card *ngIf="openList" [items]="dailyItems"></app-days-card>
+      <app-days-card *ngIf="openList && dailyItems" [items]="dailyItems"></app-days-card>
     </div>
   </section>
 </div>
