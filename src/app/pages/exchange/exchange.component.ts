@@ -4,6 +4,7 @@ import { map, Observable, startWith } from "rxjs";
 import { ExchangeService } from "@app/pages/exchange/services/exchange.service";
 import { ICurrentExchange, IDailyExchange } from "@app/pages/exchange/interfaces/exchange.interface";
 import { animate, style, transition, trigger } from "@angular/animations";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-exchange',
@@ -27,7 +28,10 @@ export class ExchangeComponent {
   public dailyItems: IDailyExchange[] = [];
   private fromCurrency = 'BRL';
 
-  constructor(private exchangeService: ExchangeService) {
+  constructor(
+    private exchangeService: ExchangeService,
+    private snackBarService: MatSnackBar
+  ) {
     this.form = new FormGroup({
       currency: new FormControl('', []),
     });
@@ -48,6 +52,12 @@ export class ExchangeComponent {
           .then((data) => {
             this.dailyItems = data;
           })
+      })
+      .catch(() => {
+        this.snackBarService.open('An error has occurred', 'Close', {
+          duration: 2000,
+          verticalPosition: 'top'
+        });
       })
   }
 

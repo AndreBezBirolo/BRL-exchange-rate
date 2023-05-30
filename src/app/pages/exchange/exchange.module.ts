@@ -11,6 +11,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatSnackBarModule
   ],
 })
 export class ExchangeModule {

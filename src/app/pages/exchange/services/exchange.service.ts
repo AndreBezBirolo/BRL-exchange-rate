@@ -24,6 +24,7 @@ export class ExchangeService {
     const currentExchange$ = this.httpClient.get<ICurrentExchangeDto>(url);
     return await lastValueFrom(currentExchange$)
       .then((data) => {
+        if (!data.success) throw new Error();
         const currentExchange = this.mapperCurrentExchange(data);
         return currentExchange;
       })
