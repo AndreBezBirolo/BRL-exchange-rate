@@ -1,44 +1,46 @@
-<!-- todo: utilizar o componente autocomplete, button. Date pipe, currency pipe. Mudar cor do tema #07B0FB-->
 <div class="spacement">
   <section class="main-content txt-center">
     <h1 class="main-title title-admin-h1">BRL Exchange Rate</h1>
     <form [formGroup]="form" class="currency-form full-width">
       <mat-form-field class="full-width input-content">
         <mat-label>Enter the currency code</mat-label>
-        <input type="text"
+        <input [matAutocomplete]="auto"
                aria-label="Enter the currency code"
-               matInput
                formControlName="currency"
-               [matAutocomplete]="auto">
+               matInput
+               type="text">
         <mat-autocomplete #auto=matAutocomplete>
           <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
             {{ option }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      <button (click)="onChangeClick()" mat-flat-button color="primary" class="full-width button-large">Exchange Result</button>
+      <button (click)="onChangeClick()" class="full-width button-large" color="primary" mat-flat-button>Exchange
+        Result
+      </button>
     </form>
   </section>
-  <section *ngIf="true" class="results">
+  <section *ngIf="currentData" class="results">
     <div class="flex center-y-row space-btwn">
       <div class="flex column">
         <p class="large-bold">Exchange rate now</p>
-        <p class="paragraph-medium">09/03/2022 - 15h09</p>
+        <p class="paragraph-medium">{{ currentData?.lastUpdatedAt | date:'dd/MM/yyyy - HH\'h\'mm'}}</p>
       </div>
       <div class="currency-to-currency title-admin-h1">
-        USD/BRL
+        {{currentData?.toSymbol}}/{{currentData?.fromSymbol}}
       </div>
     </div>
     <div class="current-currency txt-center">
-      <p class="big-number">R$ 5,00</p>
+      <p class="big-number">{{ currentData?.exchangeRate | currency}}</p>
     </div>
     <div>
       <div [ngClass]="{'blue-separator': !openList}" class="last-days-title-group flex space-btwn">
         <p class="paragraph-default txt-uppercase last-30">last 30 days</p>
-        <mat-icon *ngIf="!openList" class="cursor-pointer" (click)="openList = !openList" color="primary">add</mat-icon>
-        <mat-icon *ngIf="openList" class="cursor-pointer" (click)="openList = !openList" color="primary">remove</mat-icon>
+        <mat-icon (click)="openList = !openList" *ngIf="!openList" class="cursor-pointer" color="primary">add</mat-icon>
+        <mat-icon (click)="openList = !openList" *ngIf="openList" class="cursor-pointer" color="primary">remove
+        </mat-icon>
       </div>
-      <app-days-card *ngIf="openList"></app-days-card>
+      <app-days-card *ngIf="openList" [items]="dailyItems"></app-days-card>
     </div>
   </section>
 </div>

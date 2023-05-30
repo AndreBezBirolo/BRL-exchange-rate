@@ -25,10 +25,11 @@ export interface IDailyExchangeDto {
 }
 
 export interface IDailyExchange {
-    close: number,
-    date: Date,
-    high: number,
-    low: number,
-    open: number
+  close: number,
+  date: Date,
+  high: number,
+  low: number,
+  open: number,
+  closeDiff: number
 }
 

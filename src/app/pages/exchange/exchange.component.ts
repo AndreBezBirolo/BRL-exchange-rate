@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from "@angular/forms";
 import { map, Observable, startWith } from "rxjs";
+import { ExchangeService } from "@app/pages/exchange/services/exchange.service";
+import { ICurrentExchange, IDailyExchange } from "@app/pages/exchange/interfaces/exchange.interface";
 
 @Component({
   selector: 'app-exchange',
@@ -12,7 +14,11 @@ export class ExchangeComponent {
   public filteredOptions: Observable<string[]> | undefined;
   public form: FormGroup;
   public openList: boolean = false;
-  constructor() {
+  public currentData: ICurrentExchange | undefined;
+  public dailyItems: IDailyExchange[] = [];
+  private fromCurrency = 'BRL';
+
+  constructor(private exchangeService: ExchangeService) {
     this.form = new FormGroup({
       currency: new FormControl('', []),
     });
@@ -23,8 +29,17 @@ export class ExchangeComponent {
     );
   }
 
-  public onChangeClick(): void {
-    if(!this.form.get('currency')?.value) return;
+  public async onChangeClick(): Promise<void> {
+    if (!this.form.get('currency')?.value) return;
+
+    await this.exchangeService.getCurrentExchange(this.fromCurrency, this.form.get('currency')?.value)
+      .then(async (data) => {
+        this.currentData = data;
+        await this.exchangeService.getDailyExchange(this.fromCurrency, this.form.get('currency')?.value)
+          .then((data) => {
+            this.dailyItems = data;
+          })
+      })
   }
 
   private _filter(value: string): string[] {

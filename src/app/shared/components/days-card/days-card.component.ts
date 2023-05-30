@@ -7,21 +7,10 @@ import { IDailyExchange } from "@app/pages/exchange/interfaces/exchange.interfac
   styleUrls: ['./days-card.component.scss']
 })
 export class DaysCardComponent implements OnInit {
-  @Input() items: IDailyExchange[] = [{
-    close: 1,
-    date: new Date(),
-    low: 1,
-    high: 1,
-    open: 1
-  }, {
-    close: 1,
-    date: new Date(),
-    low: 1,
-    high: 1,
-    open: 1
-  }];
+  @Input() items: IDailyExchange[] = [];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

@@ -4,6 +4,7 @@
   margin-bottom: 40px;
   border-bottom: 2px solid var(--branded-01);
 }
+
 .card-container {
   padding-bottom: 10px;
 
@@ -18,4 +19,13 @@
 
 .default-bold {
   color: var(--neutral-dark-02);
+}
+
+
+.alert-green {
+  color: var(--alert-green)
+}
+
+.alert-red {
+  color: var(--alert-red);
 }
