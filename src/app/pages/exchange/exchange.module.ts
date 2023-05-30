@@ -2,16 +2,33 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExchangeComponent } from './exchange.component';
 import { ExchangeRoutingModule } from '@app/pages/exchange/exchange-routing.module';
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatButtonModule } from "@angular/material/button";
+import { MatInputModule } from "@angular/material/input";
+import { ReactiveFormsModule } from "@angular/forms";
+import { AppModule } from "@app/app.module";
+import { DaysCardComponent } from "@shared/components/days-card/days-card.component";
+import { MatIconModule } from "@angular/material/icon";
+import { MatListModule } from "@angular/material/list";
+import { MatCardModule } from "@angular/material/card";
 
 
 
 @NgModule({
   declarations: [
-    ExchangeComponent
+    ExchangeComponent,
+    DaysCardComponent
   ],
   imports: [
     CommonModule,
-    ExchangeRoutingModule
+    ExchangeRoutingModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule,
   ]
 })
 export class ExchangeModule { }

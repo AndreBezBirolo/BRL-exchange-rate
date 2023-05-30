@@ -1,1 +1,34 @@
-<p>days-card works!</p>
+<div class="list-container">
+  <div class="card-container" *ngFor="let item of items">
+    <mat-card>
+      <p class="full-width paragraph-medium-bold">09/03/2022</p>
+      <div class="flex space-btwn">
+        <div class="flex column">
+          <div class="flex space-btwn center-y-row">
+            <p class="table-header">Open: </p>
+            <p class="default-bold">R$ 5.0666</p>
+          </div>
+          <div class="flex space-btwn center-y-row">
+            <p class="table-header">Close: </p>
+            <p class="default-bold">R$ 5.0038</p>
+          </div>
+        </div>
+        <div>
+          <div class="flex space-btwn center-y-row">
+            <p class="table-header">High: </p>
+            <p class="default-bold">R$ 5.0689</p>
+          </div>
+          <div class="flex space-btwn center-y-row">
+            <p class="table-header">Low: </p>
+            <p class="default-bold">R$ 4.9836</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex center-y-row">
+        <p class="table-header">Close diff (%): </p>
+        <p class="default-bold">-1.15% ></p>
+      </div>
+
+    </mat-card>
+  </div>
+</div>
