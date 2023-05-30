@@ -1,0 +1,8 @@
+@use 'src/styles' as mixins;
+
+.main-title {
+  text-transform: uppercase;
+  margin: 32px 0;
+  @include mixins.title-admin-h1;
+}
+
