@@ -2,7 +2,7 @@
   <section class="main-content txt-center">
     <h1 class="main-title title-admin-h1">BRL Exchange Rate</h1>
     <form [formGroup]="form" class="currency-form full-width">
-      <mat-form-field class="full-width input-content">
+      <mat-form-field appearance="fill" class="full-width input-content">
         <mat-label>Enter the currency code</mat-label>
         <input [matAutocomplete]="auto"
                aria-label="Enter the currency code"
@@ -20,7 +20,7 @@
       </button>
     </form>
   </section>
-  <section *ngIf="currentData" class="results">
+  <section *ngIf="currentData" [@slideIn]="" class="results">
     <div class="flex center-y-row space-btwn">
       <div class="flex column">
         <p class="large-bold">Exchange rate now</p>

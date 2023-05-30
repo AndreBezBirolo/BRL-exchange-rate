@@ -18,10 +18,7 @@ button {
 }
 
 .currency-form {
-  min-width: 150px;
-  max-width: 500px;
   mat-form-field {
-    background-color: var(--neutral-gray-03);
     color: var(--neutral-dark-02);
   }
 }
@@ -37,20 +34,25 @@ button {
   .currency-to-currency {
     color: var(--branded-01);
   }
+
   .current-currency {
     padding: 16px;
     background-color: rgba(7, 176, 251, 0.1);
     margin: 15px 0 32px;
+
     .big-number {
       color: var(--branded-01);
     }
   }
+
   .large-bold, .last-30 {
     color: var(--neutral-dark-01);
   }
+
   .paragraph-medium {
     color: #333;
   }
+
   .last-days-title-group {
     padding-bottom: 16px;
   }
