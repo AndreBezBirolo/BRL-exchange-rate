@@ -50,7 +50,11 @@ export class ExchangeComponent {
         this.currentData = data;
         await this.exchangeService.getDailyExchange(this.form.get('currency')?.value, this.toCurrency)
           .then((data) => {
-            this.dailyItems = data;
+            const sortedResults = data.sort((a, b) => b.date.getTime() - a.date.getTime());
+            this.dailyItems = sortedResults.filter((result) => {
+              const dayOfWeek = result.date.getDay();
+              return dayOfWeek >= 1 && dayOfWeek <= 5;
+            }).slice(0, 30);
           })
       })
       .catch(() => {
