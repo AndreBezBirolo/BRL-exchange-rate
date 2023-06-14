@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build -base-href=\"/BRL-exchange-rate\" && angular-cli-ghpages --dir=dist/brl-exchange-rate",
+    "build": "ng build --base-href=\"/BRL-exchange-rate/\" && angular-cli-ghpages --dir=dist/brl-exchange-rate",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
