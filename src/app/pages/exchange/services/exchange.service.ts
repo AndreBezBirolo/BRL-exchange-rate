@@ -56,15 +56,33 @@ export class ExchangeService {
   }
 
   private mapperDailyExchange(data: IDailyExchangeDto): IDailyExchange[] {
-    return data.data.map(item => {
-      return {
-        close: item.close,
-        date: new Date(item.date),
-        high: item.high,
-        low: item.low,
-        open: item.open,
-        closeDiff: ((item.close - item.open) / item.open)
+    data.data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+    let previousClose: number | null = null;
+    const mappedData: IDailyExchange[] = [];
+
+    for (let i = 0; i < data.data.length; i++) {
+      const currentItem = data.data[ i ];
+
+      let closeDiff = 0;
+      if (previousClose !== null) {
+        closeDiff = (currentItem.close - previousClose) / previousClose;
+      }
+
+      const mappedItem: IDailyExchange = {
+        close: currentItem.close,
+        date: new Date(currentItem.date),
+        high: currentItem.high,
+        low: currentItem.low,
+        open: currentItem.open,
+        closeDiff: closeDiff
       };
-    });
+
+      mappedData.push(mappedItem);
+
+      previousClose = currentItem.close;
+    }
+
+    return mappedData;
   }
 }
