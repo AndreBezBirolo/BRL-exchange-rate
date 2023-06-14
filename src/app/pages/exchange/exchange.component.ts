@@ -26,7 +26,7 @@ export class ExchangeComponent {
   public openList: boolean = false;
   public currentData: ICurrentExchange | undefined;
   public dailyItems: IDailyExchange[] = [];
-  private fromCurrency = 'BRL';
+  private toCurrency = 'BRL';
 
   constructor(
     private exchangeService: ExchangeService,
@@ -45,10 +45,10 @@ export class ExchangeComponent {
   public async onChangeClick(): Promise<void> {
     if (!this.form.get('currency')?.value) return;
 
-    await this.exchangeService.getCurrentExchange(this.fromCurrency, this.form.get('currency')?.value)
+    await this.exchangeService.getCurrentExchange(this.form.get('currency')?.value, this.toCurrency,)
       .then(async (data) => {
         this.currentData = data;
-        await this.exchangeService.getDailyExchange(this.fromCurrency, this.form.get('currency')?.value)
+        await this.exchangeService.getDailyExchange(this.form.get('currency')?.value, this.toCurrency)
           .then((data) => {
             this.dailyItems = data;
           })
